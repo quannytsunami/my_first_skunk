@@ -66,8 +66,7 @@ public class SkunkDomain
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
-					activePlayer.setTurnScore(0);
+					activePlayer.scoreSkunkRoll(4); // 6th refactor --> Create scoreSkunkRoll method in Player class. 
 					activePlayer.setGameScore(0);
 					wantsToRoll = false;
 					break;
@@ -77,8 +76,7 @@ public class SkunkDomain
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
 					kitty += 2;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 2);
-					activePlayer.setTurnScore(0);
+					activePlayer.scoreSkunkRoll(2); // 6th refactor --> Create scoreSkunkRoll method in Player class. 
 					wantsToRoll = false;
 					break;
 				}
@@ -86,8 +84,7 @@ public class SkunkDomain
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 1);
-					activePlayer.setTurnScore(0);
+					activePlayer.scoreSkunkRoll(2); // 6th refactor --> Create scoreSkunkRoll method in Player class. 
 					wantsToRoll = false;
 					break;
 
@@ -239,7 +236,7 @@ public class SkunkDomain
 	}
 
 	private boolean isDoubleSkunk() {
-		return skunkDice.getLastRoll() == SKUNK_DOUBLE_SUM;
+		return skunkDice.getLastRoll() == SKUNK_DOUBLE_SUM; // Refactor constant. SKUNK_DOUBLE_SUM is int 2
 	}
 
 	private boolean isSkunkDeuce() {
