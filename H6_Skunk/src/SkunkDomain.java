@@ -70,7 +70,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getLastRoll() == 3)
+				else if (isSkunkDeuce())  // 3rd refactor --> extract method isSkunkDeuce()
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
@@ -80,7 +80,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (isRegularSkunk())
+				else if (isRegularSkunk())  // 2nd refactor --> extract method isRegularSkunk()
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
@@ -155,7 +155,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getLastRoll() == 3)
+				else if (isSkunkDeuce())
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
@@ -234,6 +234,10 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean isSkunkDeuce() {
+		return skunkDice.getLastRoll() == 3;
 	}
 
 	private boolean isRegularSkunk() {
