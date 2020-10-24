@@ -3,6 +3,7 @@ import edu.princeton.cs.introcs.*;
 
 public class SkunkDomain
 {
+	private static final int SKUNK_DOUBLE_SUM = 2;
 	private static final int SKUNK_DEUCE_SUM = 3;
 	public SkunkUI skunkUI;
 	public UI ui;
@@ -238,11 +239,11 @@ public class SkunkDomain
 	}
 
 	private boolean isDoubleSkunk() {
-		return skunkDice.getLastRoll() == 2;
+		return skunkDice.getLastRoll() == SKUNK_DOUBLE_SUM;
 	}
 
 	private boolean isSkunkDeuce() {
-		return skunkDice.getLastRoll() == SKUNK_DEUCE_SUM;
+		return skunkDice.getLastRoll() == SKUNK_DEUCE_SUM; // Refactor constant. SKUNK_DEUCE_SUM is int 3
 	}
 
 	private boolean isRegularSkunk() {
