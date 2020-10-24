@@ -54,8 +54,7 @@ public class SkunkDomain
 			ui.println("Next player is " + playerNames[activePlayerIndex] + ".");
 			activePlayer.setTurnScore(0);
 			
-			String wantsToRollStr = ui.promptReadAndReturn("Roll? y or n");
-			boolean wantsToRoll = 'y' == wantsToRollStr.toLowerCase().charAt(0);
+			boolean wantsToRoll = getRollChoice(); // 1st Refactor -> Extract method getRollChoice()
 			
 			while (wantsToRoll)
 			{
@@ -97,8 +96,7 @@ public class SkunkDomain
 				ui.println(
 						"Roll of " + skunkDice.toString() + ", gives new turn score of " + activePlayer.getTurnScore());
 
-				wantsToRollStr = ui.promptReadAndReturn("Roll again? y or n");
-				wantsToRoll = 'y' == wantsToRollStr.toLowerCase().charAt(0);
+				wantsToRoll = getRollChoice(); // part of 1st refactor --> Extract method getRollChoice()
 
 			}
 
@@ -236,6 +234,11 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean getRollChoice() {
+		String wantsToRollStr = ui.promptReadAndReturn("Roll? y or n"); // TODO Auto-generated method stub
+		return 'y' == wantsToRollStr.toLowerCase().charAt(0);
 	}
 
 }
