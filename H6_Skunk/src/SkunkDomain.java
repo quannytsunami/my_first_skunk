@@ -3,6 +3,7 @@ import edu.princeton.cs.introcs.*;
 
 public class SkunkDomain
 {
+	private static final int SKUNK_DEUCE_SUM = 3;
 	public SkunkUI skunkUI;
 	public UI ui;
 	public int numberOfPlayers;
@@ -60,7 +61,7 @@ public class SkunkDomain
 			{
 				activePlayer.setRollScore(0);
 				skunkDice.roll();
-				if (isDoubleSkunk())
+				if (isDoubleSkunk()) // 4th refactor --> extract method isDoubleSkunk()
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
@@ -241,7 +242,7 @@ public class SkunkDomain
 	}
 
 	private boolean isSkunkDeuce() {
-		return skunkDice.getLastRoll() == 3;
+		return skunkDice.getLastRoll() == SKUNK_DEUCE_SUM;
 	}
 
 	private boolean isRegularSkunk() {
